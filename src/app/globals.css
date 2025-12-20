@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+:root {
+  /* Apple-style Minimalist Color Palette */
+  --slate-50: #f8fafc;
+  --slate-100: #f1f5f9;
+  --slate-200: #e2e8f0;
+  --slate-300: #cbd5e1;
+  --slate-400: #94a3b8;
+  --slate-500: #64748b;
+  --slate-600: #475569;
+  --slate-700: #334155;
+  --slate-800: #1e293b;
+  --slate-900: #0f172a;
+
+  --electric-blue-50: #eff6ff;
+  --electric-blue-100: #dbeafe;
+  --electric-blue-200: #bfdbfe;
+  --electric-blue-300: #93c5fd;
+  --electric-blue-400: #60a5fa;
+  --electric-blue-500: #3b82f6;
+  --electric-blue-600: #2563eb;
+  --electric-blue-700: #1d4ed8;
+  --electric-blue-800: #1e40af;
+  --electric-blue-900: #1e3a8a;
+
+  --background: var(--slate-50);
+  --foreground: var(--slate-900);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-slate-50: var(--slate-50);
+  --color-slate-100: var(--slate-100);
+  --color-slate-200: var(--slate-200);
+  --color-slate-300: var(--slate-300);
+  --color-slate-400: var(--slate-400);
+  --color-slate-500: var(--slate-500);
+  --color-slate-600: var(--slate-600);
+  --color-slate-700: var(--slate-700);
+  --color-slate-800: var(--slate-800);
+  --color-slate-900: var(--slate-900);
+  --color-electric-blue-50: var(--electric-blue-50);
+  --color-electric-blue-100: var(--electric-blue-100);
+  --color-electric-blue-200: var(--electric-blue-200);
+  --color-electric-blue-300: var(--electric-blue-300);
+  --color-electric-blue-400: var(--electric-blue-400);
+  --color-electric-blue-500: var(--electric-blue-500);
+  --color-electric-blue-600: var(--electric-blue-600);
+  --color-electric-blue-700: var(--electric-blue-700);
+  --color-electric-blue-800: var(--electric-blue-800);
+  --color-electric-blue-900: var(--electric-blue-900);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --radius-3xl: 1.5rem;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
