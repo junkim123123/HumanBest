@@ -152,41 +152,7 @@ export default function AdminCreditsPage() {
           </div>
         </Card>
       </div>
-            </div>
-          </div>
-        </Card>
-        <Card className="p-6">
-          <div className="flex items-center gap-4">
-            <div className="p-3 rounded-lg bg-amber-100">
-              <RefreshCw className="w-6 h-6 text-amber-600" />
-            </div>
-            <div>
-              <p className="text-[13px] text-slate-500">Users with Credits</p>
-              <p className="text-2xl font-bold text-slate-900">
-                {users.filter((u) => u.credits_balance > 0).length}
-              </p>
-            </div>
-          </div>
-        </Card>
-      </div>
-
-      {/* Search */}
-      <div className="mb-6">
-        <div className="relative max-w-md">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-          <input
-            type="text"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search by email..."
-            className="w-full h-10 pl-10 pr-4 rounded-lg border border-slate-200 text-[14px] focus:outline-none focus:ring-2 focus:ring-slate-900"
-          />
-        </div>
-      </div>
-
-      {/* Users Table */}
-      <Card className="overflow-hidden">
-        <div className="overflow-x-auto">
+      <div className="overflow-x-auto">
           <table className="w-full">
             <thead className="bg-slate-50 border-b border-slate-200">
               <tr>
