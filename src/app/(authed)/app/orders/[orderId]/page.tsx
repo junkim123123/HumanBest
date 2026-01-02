@@ -3,8 +3,8 @@ import OrderDetailClient from "./OrderDetailClient";
 export default async function OrderDetailPage({
   params,
 }: {
-  params: Promise<{ orderId: string }>;
+  params: { orderId: string };
 }) {
-  const { orderId } = await params;
+  const { orderId } = params;
   return <OrderDetailClient orderId={orderId} />;
 }

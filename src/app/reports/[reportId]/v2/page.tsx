@@ -32,7 +32,7 @@ async function getReport(reportId: string) {
 export default async function Page({
   params,
 }: {
-  params: Promise<{ reportId: string }>;
+  params: { reportId: string };
 }) {
   const { reportId } = await params;
   

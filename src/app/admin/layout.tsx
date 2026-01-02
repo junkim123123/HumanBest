@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation'
 import { AdminNav } from '@/components/admin/AdminNav'
-import { isAdminUser } from '@/lib/auth/admin'
+import { requireAdminUser } from '@/lib/auth/admin'
 
 export default async function AdminLayout({
   children,
@@ -9,7 +9,7 @@ export default async function AdminLayout({
 }) {
   // Dev-only bypass to allow admin routes locally
   const forceAdminDev = process.env.NODE_ENV === 'development'
-  const admin = forceAdminDev ? true : await isAdminUser()
+  const admin = forceAdminDev ? true : await requireAdminUser()
 
   if (!admin) {
     redirect('/app')

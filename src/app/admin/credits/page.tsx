@@ -41,32 +41,23 @@ export default function AdminCreditsPage() {
 
   useEffect(() => {
     void loadUsers();
-  }, []);
+      {/* Search */}
+      <div className="mb-6">
+        <div className="relative max-w-md">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+          <input
+            type="text"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search by email..."
+            className="w-full h-10 pl-10 pr-4 rounded-lg border border-slate-200 text-[14px] focus:outline-none focus:ring-2 focus:ring-slate-900"
+          />
+        </div>
+      </div>
 
-  const filteredUsers = users.filter(
-    (u) => u.email.toLowerCase().includes(search.toLowerCase())
-  );
-
-  // Total balance in dollars
-  const totalBalanceDollars = users.reduce((sum, u) => sum + u.credits_balance, 0) * CREDIT_VALUE;
-
-  const handleGrantCredits = async () => {
-    if (!selectedUser || dollarAmount === 0) return;
-    
-    // Convert dollars to credits (round to nearest credit)
-    const credits = Math.round(dollarAmount / CREDIT_VALUE);
-    if (credits === 0) {
-      alert("Amount must be at least $45");
-      return;
-    }
-    
-    const finalCredits = isAdding ? credits : -credits;
-    
-    setIsGranting(true);
-    try {
-      const res = await adminGrantCredits(selectedUser.user_id, finalCredits, description);
-      if (res.success) {
-        // Update local state
+      {/* Users Table */}
+      <Card className="overflow-hidden">  
+        <div className="overflow-x-auto"> 
         setUsers((prev) =>
           prev.map((u) =>
             u.user_id === selectedUser.user_id
@@ -152,7 +143,29 @@ export default function AdminCreditsPage() {
           </div>
         </Card>
       </div>
+<<<<<<< HEAD
       <div className="overflow-x-auto">
+=======
+// Removed duplicate 'Users with Credits' block
+
+      {/* Search */}
+      <div className="mb-6">
+        <div className="relative max-w-md">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+          <input
+            type="text"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search by email..."
+            className="w-full h-10 pl-10 pr-4 rounded-lg border border-slate-200 text-[14px] focus:outline-none focus:ring-2 focus:ring-slate-900"
+          />
+        </div>
+      </div>
+
+      {/* Users Table */}
+      <Card className="overflow-hidden">
+        <div className="overflow-x-auto">
+>>>>>>> 2147810 (Fix: Update dynamic route params types and API handler signatures for Next.js compatibility)
           <table className="w-full">
             <thead className="bg-slate-50 border-b border-slate-200">
               <tr>
