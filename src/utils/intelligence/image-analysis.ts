@@ -1,6 +1,5 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
-
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
+import { createGeminiClient } from "@/lib/gemini-helper";
 
 export interface ImageAnalysisResult {
   productName: string;
@@ -10,10 +9,37 @@ export interface ImageAnalysisResult {
   keywords: string[];
 }
 
+// Helper to get working model dynamically
+async function getWorkingModel(genAI: GoogleGenerativeAI): Promise<string> {
+  const modelsToTry = [
+    "gemini-1.5-flash-latest",
+    "gemini-1.5-flash",
+    "gemini-pro"
+  ];
+
+  for (const modelName of modelsToTry) {
+    try {
+      const testModel = genAI.getGenerativeModel({ model: modelName });
+      await testModel.generateContent("test");
+      return modelName;
+    } catch {
+      continue;
+    }
+  }
+  
+  return modelsToTry[0];
+}
+
 export async function analyzeProductImage(
   imageUrl: string
 ): Promise<ImageAnalysisResult> {
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+  const genAI = createGeminiClient();
+  if (!genAI) {
+    throw new Error("Gemini API key not configured");
+  }
+
+  const modelName = await getWorkingModel(genAI);
+  const model = genAI.getGenerativeModel({ model: modelName });
 
   const prompt = `
 Analyze this product image and extract the following information:
