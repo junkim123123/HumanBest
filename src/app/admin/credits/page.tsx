@@ -221,7 +221,7 @@ export default function AdminCreditsPage() {
             </div>
           )}
         </div>
-      </Card>
+      {/* Card 닫는 태그 제거: 빌드 에러 수정 */}
 
       {/* Grant Modal */}
       {showModal && selectedUser && (
